@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication20;
+package mainPackadge;
 
 import Implementation.*;
 import interfaces.*;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author garrytrue
  */
-public class JavaApplication20 {
+public class ObserverPattern {
 
     /**
      * @param args the command line arguments
@@ -31,6 +31,7 @@ public class JavaApplication20 {
         Thread removerThread = new Thread(new DeleteSomeObservers(obsManager), "Deleter");
 
         createrThread.start();
+        
         senderThread.start();
         removerThread.start();
     }
@@ -79,7 +80,7 @@ public class JavaApplication20 {
                 try {
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(JavaApplication20.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ObserverPattern.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 mManager.setDataToObservers("Katy");
                 mManager.notifyObservers();
@@ -87,7 +88,7 @@ public class JavaApplication20 {
                 try {
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(JavaApplication20.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ObserverPattern.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 System.out.println("Sender go to sleep. We try to delete some obserler");
                 isRun = false;
