@@ -4,19 +4,16 @@
  * and open the template in the editor.
  */
 package Implementation;
-import interfaces.IManageObservers;
-import interfaces.IObserver;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import interfaces.Obsevable;
+import interfaces.Observer;
 import java.util.concurrent.CopyOnWriteArrayList;
 /**
  *
  * @author garrytrue
  */
 
-public class ObserverManager implements IManageObservers{
-    protected final CopyOnWriteArrayList<IObserver> observers;
+public class ObserverManager implements Obsevable{
+    protected final CopyOnWriteArrayList<Observer> observers;
     private String mName;
     
     public ObserverManager(){
@@ -28,33 +25,33 @@ public class ObserverManager implements IManageObservers{
      * @param o
      */
     @Override
-    public  void addObserver(IObserver o) {
+    public  void addObserver(Observer o) {
         observers.add(o);
     }
 
     @Override
-    public void removeObserver(IObserver o) {
+    public void removeObserver(Observer o) {
         observers.remove(o);
         
     }
 
     @Override
-    public synchronized void notifyObservers() {
-        for(IObserver obs:observers){
-            obs.update(mName);
+    public synchronized void notifyObservers(String value) {
+        for(Observer obs:observers){
+            obs.update(value);
         }
     }
-    public void setDataToObservers(String name){
-        mName = name;
-        notifyObservers();
-    }
-
-    @Override
-    public int getObserverNumber(IObserver o) {
-        return o.getNumber();
-    }
-    public IObserver getObserver(int pos){
-        return observers.get(pos);
-    }
-    
+//    public void setDataToObservers(String name){
+//        mName = name;
+//        notifyObservers();
+//    }
+//
+//    @Override
+//    public int getObserverNumber(Observer o) {
+//        return o.getNumber();
+//    }
+//    public Observer getObserver(int pos){
+//        return observers.get(pos);
+//    }
+//    
 }

@@ -9,10 +9,9 @@ package interfaces;
  *
  * @author garrytrue
  */
-public interface IManageObservers {
-    void addObserver(IObserver o);
-    void removeObserver(IObserver o);
-    void notifyObservers();
-    int getObserverNumber(IObserver o);
-    
+public interface Obsevable {
+    void addObserver(Observer o);
+    void removeObserver(Observer o);
+    void notifyObservers(String value);
+        
 }

@@ -10,12 +10,12 @@ import interfaces.*;
  *
  * @author garrytrue
  */
-public class SimpleObserver implements IObserver{
+public class SimpleObserver implements Observer{
     private int mNumber;
     private String mName;
-    private IManageObservers mManager;
+    private Obsevable mManager;
     
-    public SimpleObserver(IManageObservers manager, int n){
+    public SimpleObserver(Obsevable manager, int n){
         mManager = manager;
         mNumber = n;
         
@@ -28,15 +28,15 @@ public class SimpleObserver implements IObserver{
         
     }
 
-    @Override
-    public synchronized int getNumber() {
-        return mNumber;
-    }
-
-    @Override
-    public void registerObserver() {
-        mManager.addObserver(this);
-        System.out.println("Observer "+mNumber+" will be registered");
-    }
+//    @Override
+//    public synchronized int getNumber() {
+//        return mNumber;
+//    }
+//
+//    @Override
+//    public void registerObserver() {
+//        mManager.addObserver(this);
+//        System.out.println("Observer "+mNumber+" will be registered");
+//    }
     
 }
