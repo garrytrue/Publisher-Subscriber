@@ -29,6 +29,12 @@ public class ObserverPattern {
         PrintObserver mPrintObserver3 = new PrintObserver(3);
         mObserverWithCashe.addObserver(mPrintObserver3);
          mObserverWithCashe.notifyObservers("Three");
+         System.out.println("Delete observer one");
+        mObserverWithCashe.removeObserver(mPrintObserver1);
+        PrintObserver mPrintObserver4 = new PrintObserver(4);
+        mObserverWithCashe.addObserver(mPrintObserver4);
+        mObserverWithCashe.notifyObservers("Four");
+        
 
     }
 

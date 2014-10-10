@@ -9,10 +9,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import Implementation.ObserverManager;
+import Implementation.ObserverWithCashe;
 import Implementation.PrintObserver;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import static org.mockito.Mockito.*;
 
 /**
  *
@@ -60,5 +62,26 @@ public class TestObservable {
         
         
     }
+    @Test
+    public void testInvokeMethodsInObserver(){
+        ObserverWithCashe mockCashObserver = mock(ObserverWithCashe.class);
+        mockCashObserver.addObserver(mPrintObserver);
+        mockCashObserver.removeObserver(mPrintObserver);
+        mockCashObserver.notifyObservers("null");
+        verify(mockCashObserver).notifyObservers("null");
+        verify(mockCashObserver).addObserver(mPrintObserver);
+        verify(mockCashObserver).removeObserver(mPrintObserver);
+    }
+    @Test
+    public void invokeMedhotChainInObserver(){
+        ObserverWithCashe mock = mock(ObserverWithCashe.class);
+        PrintObserver mock2 = mock(PrintObserver.class);
+        mock.addObserver(mock2);
+        mock.notifyObservers("null");
+        verify(mock2).update("null");
+        
+    }
+    
+    
 
 }
