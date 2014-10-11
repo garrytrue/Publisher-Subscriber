@@ -11,6 +11,7 @@ import org.junit.Before;
 import Implementation.ObserverManager;
 import Implementation.ObserverWithCashe;
 import Implementation.PrintObserver;
+import Implementation.SimpleObserver;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -88,6 +89,17 @@ public class TestObservable {
         mock.notifyObservers("null");
         verify(mock2).update("null");
 
+    }
+    @Test
+    public void notifyTwoObservers (){
+    SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
+    SimpleObserver mSimpleObserver1 = mock(SimpleObserver.class);
+    manager.addObserver(mSimpleObserver);
+    manager.addObserver(mSimpleObserver1);
+    manager.notifyObservers("Peter");
+        verify(mSimpleObserver).update("Peter");
+        verify(mSimpleObserver1).update("Peter");
+    
     }
 
 }
