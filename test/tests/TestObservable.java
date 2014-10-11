@@ -57,7 +57,7 @@ public class TestObservable {
     @Test
     public void emptyObservableDoesNotTrowException() {
         manager.notifyObservers("test");
-        
+
     }
 
     @Test
@@ -68,38 +68,25 @@ public class TestObservable {
         verify(mock).update("Masha");
 
     }
-
     @Test
-    public void testInvokeMethodsInObserver() {
-        ObserverWithCashe mockCashObserver = mock(ObserverWithCashe.class);
-        mockCashObserver.addObserver(mPrintObserver);
-        mockCashObserver.removeObserver(mPrintObserver);
-        mockCashObserver.notifyObservers("null");
-        verify(mockCashObserver).notifyObservers("null");
-        verify(mockCashObserver).addObserver(mPrintObserver);
-        verify(mockCashObserver).removeObserver(mPrintObserver);
-    }
-
-    @Ignore
-    @Test
-    public void invokeMedhotChainInObserver() {
-        ObserverWithCashe mock = mock(ObserverWithCashe.class);
-        PrintObserver mock2 = mock(PrintObserver.class);
-        mock.addObserver(mock2);
-        mock.notifyObservers("null");
-        verify(mock2).update("null");
-
-    }
-    @Test
-    public void notifyTwoObservers (){
-    SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
-    SimpleObserver mSimpleObserver1 = mock(SimpleObserver.class);
-    manager.addObserver(mSimpleObserver);
-    manager.addObserver(mSimpleObserver1);
-    manager.notifyObservers("Peter");
+    public void notifyTwoObservers() {
+        SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
+        SimpleObserver mSimpleObserver1 = mock(SimpleObserver.class);
+        manager.addObserver(mSimpleObserver);
+        manager.addObserver(mSimpleObserver1);
+        manager.notifyObservers("Peter");
         verify(mSimpleObserver).update("Peter");
         verify(mSimpleObserver1).update("Peter");
-    
     }
+    @Test
+    public void notInvokeUpdateWhenObserverIsNotBeenNotyfied(){
+        SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
+        manager.addObserver(mSimpleObserver);
+        manager.removeObserver(mSimpleObserver);
+        manager.notifyObservers("Masha");
+        verifyZeroInteractions(mSimpleObserver);
+        
+    }
+    
 
 }
