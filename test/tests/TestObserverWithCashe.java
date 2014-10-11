@@ -22,14 +22,14 @@ public class TestObserverWithCashe {
     
     @Before
     public void setUp() {
-        mObserverWithCashe = new ObserverWithCashe();
+        mObserverWithCashe = new ObserverWithCashe<>();
     }
     
     @Test
     public void dataInNotifyAndUpdateMustBeEquals() {
         PrintObserver mock = mock(PrintObserver.class);
         mObserverWithCashe.addObserver(mock);
-        mObserverWithCashe.notifyObservers("Masha");
+        mObserverWithCashe.notifyObservers(56);
         verify(mock).update("Masha");
     }
     

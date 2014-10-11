@@ -10,9 +10,9 @@ import interfaces.*;
  *
  * @author garrytrue
  */
-public class SimpleObserver implements Observer<String>{
+public class SimpleObserver<T> implements Observer<T>{
     private int mNumber;
-    private String mName;
+    private T mName;
     private Obsevable mManager;
     
     public SimpleObserver(Obsevable manager, int n){
@@ -22,7 +22,7 @@ public class SimpleObserver implements Observer<String>{
     }
 
     @Override
-    public void update(String name) {
+    public void update(T name) {
         mName = name;
         System.out.println("I'm Observer. My name is "+mName+". My Number is "+mNumber);
         

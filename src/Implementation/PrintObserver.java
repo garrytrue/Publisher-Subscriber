@@ -10,7 +10,7 @@ import interfaces.Observer;
  *
  * @author garrytrue
  */
-public class PrintObserver implements Observer<String>{
+public class PrintObserver<T> implements Observer<T>{
     private int numb;
     
     public PrintObserver(int n){
@@ -18,7 +18,7 @@ public class PrintObserver implements Observer<String>{
     }
 
     @Override
-    public void update(String name) {
+    public void update(T name) {
         System.out.println("I'm Observer numb "+numb+". My name is "+name);
        
     }
