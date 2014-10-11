@@ -51,5 +51,13 @@ public class TestObserverWithCashe {
         mObserverWithCashe.addObserver(mSimpleObserver);
         verify(mSimpleObserver).update("Masha");
     }
+    @Test
+    public void rewriteCasheValue(){
+        SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
+        mObserverWithCashe.notifyObservers("Masha");
+        mObserverWithCashe.notifyObservers("Peter");
+        mObserverWithCashe.addObserver(mSimpleObserver);
+        verify(mSimpleObserver).update("Peter");
+    }
     
 }

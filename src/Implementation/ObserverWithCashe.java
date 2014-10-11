@@ -28,7 +28,6 @@ public class ObserverWithCashe implements Obsevable {
             throw new IllegalArgumentException("Observer is NULL");
         }
         mObserverList.add(o);
-//        count++;
         if (mStringCashe == null) {
         } else {
             o.update(mStringCashe);
