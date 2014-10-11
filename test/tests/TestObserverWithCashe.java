@@ -17,14 +17,14 @@ import static org.mockito.Mockito.*;
  * @author garrytrue
  */
 public class TestObserverWithCashe {
-
+    
     ObserverWithCashe mObserverWithCashe;
-
+    
     @Before
     public void setUp() {
         mObserverWithCashe = new ObserverWithCashe();
     }
-
+    
     @Test
     public void dataInNotifyAndUpdateMustBeEquals() {
         PrintObserver mock = mock(PrintObserver.class);
@@ -32,7 +32,7 @@ public class TestObserverWithCashe {
         mObserverWithCashe.notifyObservers("Masha");
         verify(mock).update("Masha");
     }
-
+    
     @Test
     public void notifyTwoObservers() {
         SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
@@ -44,4 +44,12 @@ public class TestObserverWithCashe {
         verify(mSimpleObserver1).update("Peter");
     }
 
+    @Test
+    public void notyfiedObserverFromCashe() {
+        SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
+        mObserverWithCashe.notifyObservers("Masha");
+        mObserverWithCashe.addObserver(mSimpleObserver);
+        verify(mSimpleObserver).update("Masha");
+    }
+    
 }

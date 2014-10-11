@@ -17,11 +17,9 @@ public class ObserverWithCashe implements Obsevable {
 
     private final CopyOnWriteArrayList<Observer> mObserverList;
     private String mStringCashe;
-    private int count;
 
     public ObserverWithCashe() {
         mObserverList = new CopyOnWriteArrayList<>();
-        count = mObserverList.size() - 1;
     }
 
     @Override
@@ -30,7 +28,11 @@ public class ObserverWithCashe implements Obsevable {
             throw new IllegalArgumentException("Observer is NULL");
         }
         mObserverList.add(o);
-        count++;
+//        count++;
+        if (mStringCashe == null) {
+        } else {
+            o.update(mStringCashe);
+        }
     }
 
     @Override
@@ -39,16 +41,10 @@ public class ObserverWithCashe implements Obsevable {
             throw new IllegalArgumentException("Observer is NULL");
         }
         mObserverList.remove(o);
-        count--;
     }
 
     @Override
     public void notifyObservers(String value) {
-//        Update new observers with cashed value
-        for (int i = count; i < mObserverList.size(); i++) {
-            mObserverList.get(i).update(mStringCashe);
-        }
-       
 //  Update ALL observers with new value
         for (Observer obs : mObserverList) {
             obs.update(value);
