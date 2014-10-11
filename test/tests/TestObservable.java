@@ -31,17 +31,6 @@ public class TestObservable {
 
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-        manager = new ObserverManager();
-        mPrintObserver = new PrintObserver(1);
-
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
     @Before
     public void setUp() {
         System.out.println("Before");
