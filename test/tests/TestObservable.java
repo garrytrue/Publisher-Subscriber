@@ -68,6 +68,7 @@ public class TestObservable {
         verify(mock).update("Masha");
 
     }
+
     @Test
     public void notifyTwoObservers() {
         SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
@@ -78,15 +79,14 @@ public class TestObservable {
         verify(mSimpleObserver).update("Peter");
         verify(mSimpleObserver1).update("Peter");
     }
+
     @Test
-    public void notInvokeUpdateWhenObserverIsNotBeenNotyfied(){
+    public void notInvokeUpdateWhenObserverIsNotBeenNotyfied() {
         SimpleObserver mSimpleObserver = mock(SimpleObserver.class);
         manager.addObserver(mSimpleObserver);
         manager.removeObserver(mSimpleObserver);
         manager.notifyObservers("Masha");
         verifyZeroInteractions(mSimpleObserver);
-        
     }
-    
 
 }
