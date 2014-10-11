@@ -8,6 +8,7 @@ package interfaces;
 /**
  *
  * @author garrytrue
+ * @param <T>
  */
 public interface Obsevable<T> {
     void addObserver(Observer<T> o);

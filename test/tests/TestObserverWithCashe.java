@@ -30,7 +30,7 @@ public class TestObserverWithCashe {
         PrintObserver mock = mock(PrintObserver.class);
         mObserverWithCashe.addObserver(mock);
         mObserverWithCashe.notifyObservers(56);
-        verify(mock).update("Masha");
+        verify(mock).update(0x38);
     }
     
     @Test
