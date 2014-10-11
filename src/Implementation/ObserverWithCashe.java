@@ -13,10 +13,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  * @author garrytrue
  */
-public class ObserverWithCashe implements Obsevable<String> {
+public class ObserverWithCashe<T> implements Obsevable<T> {
 
     private final CopyOnWriteArrayList<Observer> mObserverList;
-    private String mStringCashe;
+    private T mStringCashe;
 
     public ObserverWithCashe() {
         mObserverList = new CopyOnWriteArrayList<>();
@@ -43,7 +43,7 @@ public class ObserverWithCashe implements Obsevable<String> {
     }
 
     @Override
-    public void notifyObservers(String value) {
+    public void notifyObservers(T value) {
 //  Update ALL observers with new value
         for (Observer obs : mObserverList) {
             obs.update(value);

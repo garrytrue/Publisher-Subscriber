@@ -12,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author garrytrue
  */
 
-public class ObserverManager implements Obsevable <String>{
+public class ObserverManager <T> implements Obsevable <T>{
     protected final CopyOnWriteArrayList<Observer> observers;
     private String mName;
     
@@ -36,7 +36,7 @@ public class ObserverManager implements Obsevable <String>{
     }
 
     @Override
-    public synchronized void notifyObservers(String value) {
+    public synchronized void notifyObservers(T value) {
         for(Observer obs:observers){
             obs.update(value);
         }
