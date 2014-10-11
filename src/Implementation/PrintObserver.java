@@ -10,7 +10,7 @@ import interfaces.Observer;
  *
  * @author garrytrue
  */
-public class PrintObserver implements Observer{
+public class PrintObserver implements Observer<String>{
     private int numb;
     
     public PrintObserver(int n){

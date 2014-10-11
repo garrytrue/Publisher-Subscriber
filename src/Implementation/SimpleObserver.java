@@ -10,7 +10,7 @@ import interfaces.*;
  *
  * @author garrytrue
  */
-public class SimpleObserver implements Observer{
+public class SimpleObserver implements Observer<String>{
     private int mNumber;
     private String mName;
     private Obsevable mManager;
@@ -27,16 +27,4 @@ public class SimpleObserver implements Observer{
         System.out.println("I'm Observer. My name is "+mName+". My Number is "+mNumber);
         
     }
-
-//    @Override
-//    public synchronized int getNumber() {
-//        return mNumber;
-//    }
-//
-//    @Override
-//    public void registerObserver() {
-//        mManager.addObserver(this);
-//        System.out.println("Observer "+mNumber+" will be registered");
-//    }
-    
 }

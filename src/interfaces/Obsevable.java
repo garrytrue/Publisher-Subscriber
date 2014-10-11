@@ -9,9 +9,9 @@ package interfaces;
  *
  * @author garrytrue
  */
-public interface Obsevable {
-    void addObserver(Observer o);
-    void removeObserver(Observer o);
-    void notifyObservers(String value);
+public interface Obsevable<T> {
+    void addObserver(Observer<T> o);
+    void removeObserver(Observer<T> o);
+    void notifyObservers(T value);
         
 }

@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  * @author garrytrue
  */
-public class ObserverWithCashe implements Obsevable {
+public class ObserverWithCashe implements Obsevable<String> {
 
     private final CopyOnWriteArrayList<Observer> mObserverList;
     private String mStringCashe;

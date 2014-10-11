@@ -9,6 +9,6 @@ package interfaces;
  *
  * @author garrytrue
  */
-public interface Observer {
-    void update(String name);
+public interface Observer<T> {
+    void update(T name);
    }

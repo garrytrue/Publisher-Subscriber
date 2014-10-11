@@ -12,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author garrytrue
  */
 
-public class ObserverManager implements Obsevable{
+public class ObserverManager implements Obsevable <String>{
     protected final CopyOnWriteArrayList<Observer> observers;
     private String mName;
     
